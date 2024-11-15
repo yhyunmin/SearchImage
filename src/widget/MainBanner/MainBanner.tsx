@@ -9,11 +9,11 @@ export const MainBanner = () => {
           <h2 className="my-4 text-5xl font-black tracking-tighter">
             프로젝트 01:오픈 API를 활용한 이미지 검색 사이트 만들기
           </h2>
-          <div className="flex flex-col gap-2">
-            <p className="font-black tracking-tight">인터넷 시각자료 출처입니다.</p>
-            <p className="font-black tracking-tight">모든지역에 있는 크리에이터들의 지원을 받습니다.</p>
+          <div className="flex flex-col gap-1">
+            <p className="text-xl font-semibold tracking-tight">인터넷 시각자료 출처입니다.</p>
+            <p className="text-xl font-semibold tracking-tight">모든지역에 있는 크리에이터들의 지원을 받습니다.</p>
           </div>
-          <BaseInput type="search" className="relative cursor-pointer" />
+          <BaseInput type="search" className="relative cursor-pointer text-black" />
         </div>
       </section>
     </>
