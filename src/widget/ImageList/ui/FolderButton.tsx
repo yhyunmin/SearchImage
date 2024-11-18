@@ -3,8 +3,8 @@ import { FolderOpen } from 'lucide-react';
 export const FolderButton = () => {
   return (
     <>
-      <button className="absolute right-4 top-4 rounded-xl bg-zinc-400 p-4 text-white opacity-75 shadow">
-        <FolderOpen />
+      <button className="absolute right-3 top-3 flex h-11 w-11 transform items-center justify-center rounded-xl bg-zinc-600 p-3 text-white opacity-75 shadow hover:bg-zinc-800">
+        <FolderOpen size={40} />
       </button>
     </>
   );
