@@ -1,7 +1,6 @@
-import { BaseButton } from '@/components/common/BaseButton';
-import { Divider } from '@/components/common/Divider';
+import { BaseButton } from '@/shared';
+import { Divider } from '@/shared';
 import { Logo, Profile } from '@/widget/Header/ui';
-
 
 import { Album } from 'lucide-react';
 export const Header = () => {
@@ -12,7 +11,7 @@ export const Header = () => {
         <div className="flex h-full items-center gap-4">
           <BaseButton className="rounded bg-zinc-100 font-bold shadow-none">
             <Album className="h-full w-full" />
-            <span>북 마크 </span>
+            <span>북 마크</span>
           </BaseButton>
           <Divider />
           <Profile />

@@ -1,5 +1,5 @@
-import { BaseInput } from '@/components/common/BaseInput';
-import bannerBg from '@/assets/banner-bg.png';
+import { SearchInput } from '@/features';
+import bannerBg from '@/shared/assets/banner-bg.png';
 
 export const MainBanner = () => {
   return (
@@ -13,7 +13,7 @@ export const MainBanner = () => {
             <p className="text-xl font-semibold tracking-tight">인터넷 시각자료 출처입니다.</p>
             <p className="text-xl font-semibold tracking-tight">모든지역에 있는 크리에이터들의 지원을 받습니다.</p>
           </div>
-          <BaseInput type="search" className="relative cursor-pointer text-black" />
+          <SearchInput />
         </div>
       </section>
     </>

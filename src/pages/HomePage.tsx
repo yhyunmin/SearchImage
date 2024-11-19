@@ -1,4 +1,5 @@
-import { Toaster } from '@/components/ui/toaster';
+import { Toaster } from '@/shared/ui/toaster';
+import { Footer } from '@/widget/Footer';
 import { Header } from '@/widget/Header';
 import { MainBanner } from '@/widget/MainBanner';
 import { SubNavBar } from '@/widget/SubNavBar';
@@ -13,6 +14,7 @@ export const HomePage = () => {
         <MainBanner />
         <Outlet />
       </main>
+      <Footer />
       <Toaster />
     </>
   );

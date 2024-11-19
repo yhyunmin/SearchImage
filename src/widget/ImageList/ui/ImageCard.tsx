@@ -1,5 +1,5 @@
-import { AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { AvatarFallback, AvatarImage } from '@/shared/ui/avatar';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/shared/ui/card';
 import {
   DialogTrigger,
   Dialog,
@@ -8,13 +8,13 @@ import {
   DialogContent,
   DialogTitle,
   DialogDescription,
-} from '@/components/ui/dialog';
+} from '@/shared/ui/dialog';
 import { FolderButton } from '@/widget/ImageList/ui';
 import { Avatar } from '@radix-ui/react-avatar';
 import { File, Heart, Pin, Text } from 'lucide-react';
-import { BaseButton } from '@/components/common/BaseButton';
+import { BaseButton } from '@/shared';
 import { ImageDataType } from '@/app/types';
-import { useToast } from '@/hooks/use-toast';
+import { useToast } from '@/shared/hooks/use-toast';
 
 interface Props {
   data: ImageDataType;

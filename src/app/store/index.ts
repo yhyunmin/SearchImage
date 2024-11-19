@@ -5,7 +5,7 @@ export const searchValueAtom = atom<string>('korea');
 export const pageAtom = atom<number>(1);
 
 /** 비동기 API 호출을 처리하는 함수 */
-export const fetchApi = async (searchValue: string, page: number) => {
+export const fetchApi = async (searchValue: string, page: number = 1) => {
   const API_KEY = 'RtXdVXs2b2QhLghvC4Rg-bM2lZABj6sXq3Aa74AQ7D8';
   const BASE_URL = 'https://api.unsplash.com/search/photos';
 
@@ -17,4 +17,3 @@ export const fetchApi = async (searchValue: string, page: number) => {
     throw error; // 오류를 던져서 나중에 처리할 수 있게 함
   }
 };
-

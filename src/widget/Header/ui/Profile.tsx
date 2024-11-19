@@ -1,9 +1,9 @@
-import SVGProfile from '@/assets/profile.svg?react';
+import SVGProfile from '@/shared/assets/profile.svg?react';
 export const Profile = () => {
   return (
     <>
-      <div className='flex items-center gap-2 font-medium'>
-        <div className='rounded-full bg-zinc-100 overflow-hidden'>
+      <div className="flex items-center gap-2 font-medium">
+        <div className="overflow-hidden rounded-full bg-zinc-100">
           <SVGProfile width={48} height={48} />
         </div>
         <p>Hyunmin Yi</p>

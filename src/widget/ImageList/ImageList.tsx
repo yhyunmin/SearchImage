@@ -1,6 +1,6 @@
 import { ImageDataType } from '@/app/types';
-import { useToast } from '@/hooks/use-toast';
-import { fetchApi, pageAtom, searchValueAtom } from '@/store';
+import { useToast } from '@/shared/hooks/use-toast';
+import { fetchApi, pageAtom, searchValueAtom } from '@/app/store';
 import { ImageCard } from '@/widget/ImageList/ui';
 import { useAtom } from 'jotai';
 import { useCallback, useEffect, useLayoutEffect, useState } from 'react';
