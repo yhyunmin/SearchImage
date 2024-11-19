@@ -1,2 +1,2 @@
-export * from '@/app/Route.tsx';
-export * from '@/app/store.ts';
+export * from '@/app/route/Route';
+export * from '@/app/store/store';
