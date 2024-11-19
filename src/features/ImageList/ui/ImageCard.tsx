@@ -9,21 +9,17 @@ import {
   DialogTitle,
   DialogDescription,
 } from '@/shared/ui/dialog';
-import { FolderButton } from '@/widget/ImageList/ui';
 import { Avatar } from '@radix-ui/react-avatar';
 import { File, Heart, Pin, Text } from 'lucide-react';
 import { BaseButton } from '@/shared';
 import { ImageDataType } from '@/app/types';
-import { useToast } from '@/shared/hooks/use-toast';
+import { FolderButton } from '@/features/ImageList/ui/FolderButton';
 
 interface Props {
   data: ImageDataType;
 }
 
-export const ImageCard = ({ data }: Props) => {
-  const { toast } = useToast();
-
-  // addBookmark 추가
+const ImageCard = ({ data }: Props) => {
   return (
     <>
       <li className="relative flex flex-col gap-4">
@@ -109,3 +105,5 @@ export const ImageCard = ({ data }: Props) => {
     </>
   );
 };
+
+export default ImageCard;

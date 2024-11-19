@@ -1,5 +1,5 @@
+import { ImageList } from '@/features/ImageList';
 import { HomePage } from '@/pages';
-import { ImageList } from '@/widget/ImageList/ImageList';
 import { createBrowserRouter } from 'react-router-dom';
 
 export const Route = createBrowserRouter([
