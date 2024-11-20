@@ -1,18 +1,20 @@
-import { fetchApiAtom } from '@/app';
-import { searchValueAtom } from '@/app/store';
+import { ImageListAtom, getApiAtom, queryIdAtom } from '@/app';
 import { useAtom } from 'jotai';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const useFetchImgList = () => {
-  const [value] = useAtom(searchValueAtom);
-  const [, fetchApi] = useAtom(fetchApiAtom);
-
+  const [results, setResults] = useState<any[]>([]);
+  const [data] = useAtom(ImageListAtom);
+  const [query] = useAtom(queryIdAtom);
+  const [getApi] = useAtom(getApiAtom);
   useEffect(() => {
-    console.log('value 변경으로 인한 useFetchImgList 호출', value);
-    fetchApi();
-  }, [value]);
+    getApi;
+    data;
+    console.log(data, 'useFetchImgList');
+    console.log(results, 'useFetchImgList');
+  }, [getApi, data]);
 
-  return { fetchApi, value };
+  return { results };
 };
 
 export default useFetchImgList;

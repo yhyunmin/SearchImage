@@ -1,25 +1,22 @@
-import { searchValueAtom } from '@/app/store';
+import { queryIdAtom } from '@/app';
 import { useAtom } from 'jotai';
-import { ChangeEvent, KeyboardEvent, useEffect, useState } from 'react';
+import { ChangeEvent, KeyboardEvent, useState } from 'react';
 
 const useSearch = () => {
-  const [value, setValue] = useAtom(searchValueAtom);
-  const [query, setQuery] = useState('');
+  const [_, setQuery] = useAtom(queryIdAtom);
+  const [value, setValue] = useState('');
 
   const handleKeydown = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       // console.log('baseInput의 handleKeyDown 작동완료');
-      setValue(query);
+      setQuery(value);
+      console.log('searchValueAtom 상태:', value);
     }
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setQuery(e.target.value);
+    setValue(e.target.value);
   };
-
-  useEffect(() => {
-    console.log('searchValueAtom 상태:', value);
-  }, [value]);
 
   return { value, setValue, handleKeydown, handleChange };
 };
