@@ -1,4 +1,4 @@
-import { pageIdAtom, totalPageAtom } from '@/app';
+import usePagination from '@/features/pagination/hooks/usePagination';
 import {
   Pagination,
   PaginationContent,
@@ -8,39 +8,9 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from '@/shared/ui/pagination';
-import { useAtom } from 'jotai';
-import { useCallback, useEffect, useState } from 'react';
 
 const BasePagination = () => {
-  const [query] = useAtom(pageIdAtom);
-  const [currentPage, setPage] = useAtom(pageIdAtom);
-  const [totalPage] = useAtom(totalPageAtom);
-  const [pageItems, setPageItems] = useState<number[]>([]);
-
-  const showItemsNumber = 3;
-
-  const lastPage = () => {
-    return Math.ceil(totalPage / 30);
-  };
-
-  //페이지네이션 아이템 렌더링 //
-  const renderItems = useCallback(() => {
-    const lastNumber = lastPage();
-    const startPage = Math.max(1, currentPage - Math.floor(showItemsNumber / 2));
-    const endPage = Math.min(lastNumber, startPage + showItemsNumber - 1);
-    return Array.from({ length: endPage - startPage + 1 }, (_, i) => startPage + i);
-  }, [query]);
-
-  useEffect(() => {
-    setPageItems(renderItems());
-  }, [query, currentPage]);
-  // 경로 파라미터 page아톰에 넣기.
-  // useEffect(() => {
-  //   const queryParams = new URLSearchParams(location.search);
-  //   const page = parseInt(queryParams.get('page') || '1');
-  //   setPage(page);
-  // }, [currentPage]);
-
+  const { currentPage, lastPage, pageItems, setPage } = usePagination();
   return (
     <>
       <Pagination>

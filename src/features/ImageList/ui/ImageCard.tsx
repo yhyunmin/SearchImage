@@ -14,12 +14,15 @@ import { File, Heart, Pin, Text } from 'lucide-react';
 import { BaseButton } from '@/shared';
 import { ImageDataType } from '@/app/types';
 import { FolderButton } from '@/features/ImageList/ui/FolderButton';
+import useBookMarks from '@/features/ImageList/hooks/useBookMarks';
 
 interface Props {
   data: ImageDataType;
 }
 
 const ImageCard = ({ data }: Props) => {
+  const { bookMarkList, handleAddBookMark } = useBookMarks();
+
   return (
     <>
       <li className="relative flex flex-col gap-4">
@@ -34,7 +37,11 @@ const ImageCard = ({ data }: Props) => {
                 </CardTitle>
               </DialogTrigger>
               <CardDescription>
-                <FolderButton />
+                <FolderButton
+                  onClick={() => {
+                    handleAddBookMark(data);
+                  }}
+                />
               </CardDescription>
               <DialogContent className="w-full rounded-2xl bg-white p-8">
                 <DialogHeader>
