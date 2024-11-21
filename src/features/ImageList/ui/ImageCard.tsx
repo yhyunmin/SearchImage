@@ -21,8 +21,8 @@ interface Props {
 }
 
 const ImageCard = ({ data }: Props) => {
-  const { bookMarkList, handleAddBookMark } = useBookMarks();
-
+  const { bookMarkList, handleAddBookMark, isBookmarked } = useBookMarks();
+  const isMarked = isBookmarked(data.id);
   return (
     <>
       <li className="relative flex flex-col gap-4">
@@ -37,11 +37,14 @@ const ImageCard = ({ data }: Props) => {
                 </CardTitle>
               </DialogTrigger>
               <CardDescription>
-                <FolderButton
-                  onClick={() => {
-                    handleAddBookMark(data);
-                  }}
-                />
+                {isMarked ? (
+                  <FolderButton
+                    onClick={() => {
+                      handleAddBookMark(data);
+                    }}
+                  />
+                ) : // TODO 북마크 삭제버튼 추가하기
+                null}
               </CardDescription>
               <DialogContent className="w-full rounded-2xl bg-white p-8">
                 <DialogHeader>

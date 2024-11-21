@@ -29,7 +29,10 @@ const useBookMarks = () => {
     setBookMarkList(getBookmark());
   }, []);
 
-  return { bookMarkList, handleAddBookMark };
+  const isBookmarked = (id: string) => {
+    return bookMarkList.some((i) => i.id === id);
+  };
+  return { bookMarkList, handleAddBookMark,isBookmarked };
 };
 
 export default useBookMarks;
