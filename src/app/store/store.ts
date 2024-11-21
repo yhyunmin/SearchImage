@@ -1,4 +1,3 @@
-import { fetchImages } from '@/app/api';
 import { atom } from 'jotai';
 
 export const queryAtom = atom('seoul');

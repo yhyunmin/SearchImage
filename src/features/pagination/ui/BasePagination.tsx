@@ -15,44 +15,78 @@ const BasePagination = () => {
   const [currentPage, setPage] = useAtom(pageIdAtom);
   const [totalPage] = useAtom(totalPageAtom);
 
-  // 페이지네이션
-  // 1. 각 totalPage 30개씩 분할(separated)하여 paginationItem 렌더링
-  const renderItems = () => {
-    const showItemNumber = 3;
-    const itemNumber = Math.ceil(totalPage / 30);
-    return Array.from({ length: itemNumber }, (_, i) => i + 1);
+  const showItemsNumber = 3;
+
+  const lastPage = () => {
+    return Math.ceil(totalPage / 30);
   };
-  useEffect(() => {
-    console.log('test', renderItems());
-  });
-  // 2. currentPage는 item 가운데
-  // 3. item마다 setItem currentPage기준으로 바인딩
-  // 4. prev / next setItem + 1 하기
-  // 5. separted 마지막 숫자 렌더링하기.
+
+  //페이지네이션 아이템 렌더링 //
+  const renderItems = () => {
+    const lastNumber = lastPage();
+    const startPage = Math.max(1, currentPage - Math.floor(showItemsNumber / 2));
+    const endPage = Math.min(lastNumber, startPage + showItemsNumber - 1);
+    return Array.from({ length: endPage - startPage + 1 }, (_, i) => startPage + i);
+  };
+
+  // 경로 파라미터 page아톰에 넣기.
+  // useEffect(() => {
+  //   const queryParams = new URLSearchParams(location.search);
+  //   const page = parseInt(queryParams.get('page') || '1');
+  //   setPage(page);
+  // }, [currentPage]);
 
   return (
     <>
       <Pagination>
         <PaginationContent>
-          <PaginationItem>
-            <PaginationPrevious href="#" onClick={() => setPage(currentPage - 1)} />
+          <PaginationItem className="cursor-pointer">
+            <PaginationPrevious
+              // href={`?page=${Math.max(1, currentPage - 1)}`}
+              onClick={(event) => {
+                event.preventDefault();
+                setPage(Math.max(1, currentPage - 1));
+              }}
+            />
           </PaginationItem>
-          <PaginationItem>
-            <PaginationLink href="#">1</PaginationLink>
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationLink href="#" isActive>
-              2
-            </PaginationLink>
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationLink href="#">3</PaginationLink>
-          </PaginationItem>
+          {renderItems().map((v) => (
+            <>
+              <PaginationItem key={v} className="cursor-pointer">
+                <PaginationLink
+                  //  href={`?page=${v}`}
+                  onClick={(event) => {
+                    event.preventDefault();
+                    setPage(v);
+                  }}
+                  isActive={v === currentPage}
+                >
+                  {v}
+                </PaginationLink>
+              </PaginationItem>
+            </>
+          ))}
           <PaginationItem>
             <PaginationEllipsis />
           </PaginationItem>
-          <PaginationItem>
-            <PaginationNext href="#" onClick={() => setPage(currentPage + 1)} />
+          <PaginationItem className="cursor-pointer">
+            <PaginationLink
+              // href={`?page=${lastPage()}`}
+              onClick={(event) => {
+                event.preventDefault();
+                setPage(lastPage());
+              }}
+            >
+              {lastPage()}
+            </PaginationLink>
+          </PaginationItem>
+          <PaginationItem className="cursor-pointer">
+            <PaginationNext
+              // href={`?page=${Math.min(lastPage(), currentPage + 1)}`}
+              onClick={(event) => {
+                event.preventDefault();
+                setPage(Math.min(lastPage(), currentPage + 1));
+              }}
+            />
           </PaginationItem>
         </PaginationContent>
       </Pagination>
