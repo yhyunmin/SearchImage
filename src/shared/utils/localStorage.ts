@@ -11,6 +11,7 @@ export const setStorage = <T>(k: string, v: T) => {
 export const getStorage = <T>(key: string): T | string | null => {
   try {
     const item = localStorage.getItem(key);
+    console.log(item, 'item');
     if (typeof item === 'string') {
       return item;
     }
@@ -22,6 +23,9 @@ export const getStorage = <T>(key: string): T | string | null => {
 };
 
 export const getBookmark = (): ImageDataType[] => {
-  const result = getStorage<ImageDataType[]>('bookmarks');
-  return Array.isArray(result) ? result : [];
-}
+  const result = getStorage<ImageDataType[]>('bookmark');
+  const bookmarks: ImageDataType[] = [];
+  const data = JSON.parse(result as string);
+  bookmarks.push(data);
+  return bookmarks;
+};

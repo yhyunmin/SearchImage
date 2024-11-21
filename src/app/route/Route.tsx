@@ -1,4 +1,4 @@
-import BookmarksList from '@/features/BookmarkList/BookmarksList';
+import { BookmarksList } from '@/features/BookmarkList';
 import { ImageList } from '@/features/ImageList';
 import { HomePage, Bookmarks } from '@/pages';
 
@@ -16,8 +16,8 @@ export const Route = createBrowserRouter([
     ],
   },
   {
-    path: '/bookmarks',
+    path: '/bookmark',
     element: <Bookmarks />,
-    children: [{ path: '/bookmarks', Component: () => <BookmarksList /> }],
+    children: [{ path: '/bookmark', Component: () => <BookmarksList /> }],
   },
 ]);
