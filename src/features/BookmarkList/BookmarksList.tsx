@@ -1,15 +1,18 @@
 import { ImageDataType } from '@/app/types';
 import { ImageCard } from '@/features/ImageList';
-import { getBookmark } from '@/shared/utils/localStorage';
+import { getBookmark, setStorage } from '@/shared/utils/localStorage';
 import { useState, useEffect } from 'react';
 
 export const BookmarksList = () => {
   const [imageList, setImageList] = useState<ImageDataType[]>([]);
 
   useEffect(() => {
-    const data = getBookmark();
-    console.log(data, 'data');
-    setImageList(data);
+    const stored = getBookmark();
+    if (stored.length === 0) {
+      setStorage('bookmark', []);
+    } else {
+      setImageList(getBookmark());
+    }
   }, []);
 
   return (
