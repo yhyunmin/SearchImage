@@ -12,7 +12,6 @@ const useImageList = () => {
   useEffect(() => {
     fetchImages(query, pageId).then((res) => {
       const data = res;
-      console.log(data);
       setImageList(data.results);
       setTotalPage(data.total_pages);
     });

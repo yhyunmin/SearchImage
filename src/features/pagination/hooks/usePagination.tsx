@@ -23,7 +23,7 @@ const usePagination = () => {
       return Array.from({ length: endPage - startPage + 1 }, (_, i) => startPage + i);
     };
     const pages = renderItems();
-    console.log(pages);
+    // console.log(pages);
     setPageItems(pages);
   }, [query, currentPage, totalPage]);
   return { pageItems, setPage, currentPage, lastPage };
